@@ -10,10 +10,19 @@ function App() {
   const filter = useSelector((state) => state.contacts.filter);
   const contacts = useSelector((state) => state.contacts.items);
 
+ const handleAddContact = (newContact) => {
+  const existingContact = contacts.find(
+    (contact) => contact.name && contact.name.toLowerCase() === newContact.name.toLowerCase()
+  );
 
-  const handleAddContact = (newContact) => {
-    dispatch(addContact(newContact));
-  };
+  if (existingContact) {
+    alert(`Contact ${existingContact.name} was already added.`);
+    return;
+  }
+
+  dispatch(addContact(newContact));
+};
+
 
   const handleFilterChange = (event) => {
     dispatch(setFilter(event.target.value));
