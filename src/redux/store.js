@@ -7,7 +7,7 @@ import { combineReducers } from 'redux';
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: "filter",
+  blacklist: ["filter"],
 };
 
 const rootReducer = combineReducers({
